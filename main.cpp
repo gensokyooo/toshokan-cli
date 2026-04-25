@@ -4,6 +4,8 @@
 
 using namespace std;
 
+
+
 class Account {
 private:
     int id = 0;
@@ -27,8 +29,33 @@ public:
         cout << "Balance:" << balance << endl;
         cout << "Id:" << id << endl;
     }
+
+    double getBalance () const {
+        return balance;
+    }
+
 };
 
+class AccManager {
+
+private:
+    vector <Account> accounts;
+
+public:
+    string name;
+    bool membership;
+
+    void createAccount () {
+        cout << "Enter name:" << " ";  cin >> name;
+        cout << endl;
+        membership = true;
+        Account a (name, membership);
+        cout << endl;
+        a.showAccount();
+
+    }
+
+};
 
 class Book {
 private:
@@ -93,9 +120,27 @@ public:
 int main () {
 
     Library library;
-    Account a ("John" , false);
-    Account b ("Bonny" , false);
-    Book book1 ("Norwegian Wood", "Murakami", 10.99, false);
-    Book book2 ("Your Lie In April", "Arakawa", 10.99, false);
+
+    cout << "=========================" << endl;
+    cout << "Welcome to Toshokan" << endl;
+    cout << "=========================" << endl;
+
+    int x;
+    cout << "What would you like to do today?";
+    cout << "\n 1. Create an account \n 2. Sell a book \n 3. Buy a book \n 4. View books " << endl;
+    cout << "-------------------------" << endl;
+
+    cout << "Select an option: "; cin >> x;
+
+    AccManager accmanager;
+
+    while (x != 0) {
+        switch (x) {
+            case 1: accmanager.createAccount();
+                break;
+        }
+    cout << "Select an option: "; cin >> x;
+    }
+
 
 }
